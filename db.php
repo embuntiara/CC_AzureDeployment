@@ -3,10 +3,10 @@
 $ssl_ca = 'DigiCertGlobalRootG2.crt.pem';
 
 // HARDCODE DULU BIAR JELAS
-$host = 'web-server-crud.mysql.database.azure.com'; // Isi Hostname DB lu
+$host = 'web-server-crud.mysql.database.azure.com';
 $dbname = 'crud_db';
-$username = 'azureuser'; // Isi username lu
-$password = 'Rahasia2025'; // Isi password yang tadi lu reset
+$username = 'blmzqklfhg'; // <--- PAKE NAMA ANEH INI
+$password = 'Rahasia2025'; // Pake password yang tadi lu reset
 
 // Debugging: Cetak variabel biar yakin (HAPUS NANTI)
 // echo "Mencoba konek ke: $host dengan user $username <br>";
