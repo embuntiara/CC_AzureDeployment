@@ -1,0 +1,5 @@
+{
+    "require": {
+        "nativephp/electron": "^0.9.0"
+    }
+}
