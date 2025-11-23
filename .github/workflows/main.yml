@@ -1,27 +1,30 @@
-name: Deploy PHP App to Azure
+name: Deploy ke Azure
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ "main" ] # Sesuaikan sama branch lu
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      
-    - name: Set up PHP
+
+    - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.4' # Sesuai dengan runtime yang kita buat
-        coverage: none
-        
-    - name: 'Deploy to Azure Web App'
+        php-version: '8.2' # Sesuaikan versi PHP lu
+
+    # Langkah ini PENTING biar sertifikat SSL ikut ke-deploy
+    - name: Download SSL Cert if missing
+      run: |
+        if [ ! -f DigiCertGlobalRootG2.crt.pem ]; then
+          wget https://dl.cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem
+        fi
+
+    - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{ vars.AZURE_APP_NAME }} # Menggunakan VARS untuk app name
-        slot-name: 'production'
-        package: .
+        app-name: 'webcrudrara' 
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: .
